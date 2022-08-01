@@ -1,7 +1,7 @@
 <template>
     <div>
         <!-- 面包屑 -->
-        <el-breadcrumb :separator-icon="ArrowRight">
+        <el-breadcrumb separator="/">
             <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
             <el-breadcrumb-item>账号列表</el-breadcrumb-item> 
         </el-breadcrumb>
@@ -51,7 +51,7 @@
                 v-model:currentPage="searchParams.pagenum"
                 v-model:page-size="searchParams.pagesize"
                 :page-sizes="[2,5,10,20]"
-                :small="small"  
+                small  
                 layout="total, sizes, prev, pager, next, jumper"
                 :total="total"
                 @size-change="searchList"
