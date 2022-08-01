@@ -35,7 +35,7 @@
           <el-input type="password" v-model="loginData.password" />
         </el-form-item>
       </el-form>
-      <el-button type="primary" class="login_btn" @click="hanLogin"
+      <el-button type="primary" class="login_btn" @click="handleLogin"
         >登录</el-button
       >
       <!-- <p>{{num}}</p> -->
@@ -46,6 +46,7 @@
 import { reactive, toRefs } from "vue";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
+import {loginApi} from "@/utils/request"
 export default {
   name: "login",
   setup() {
@@ -54,38 +55,28 @@ export default {
     let count = store.state.count;
     const data = reactive({
       loginData: {
-        username: "",
-        password: "",
+        username: "admin",
+        password: "123456",
       },
       num: count,
     });
-    // const handleLogin=()=>{
-    // // 请求后台接口
-    // // 默认用户：admin/123456
-    // loginApi(data.loginData).then(res=>{
-    //     if(res.data){
-    //         store.commit('setUserInfo', res.data);
-    //         localStorage.setItem("loginData",JSON.stringify(res.data))
-    //         // 跳转/user
-    //         router.push({
-    //             path:"/"
-    //         })
-    //     }
-    // })
-    // }
-    let hanLogin = async () => {
-      // store.commit("setCount", 80);
-      try {
-        let sd = await store.dispatch("setCountFn", 200);
-        alert("成功", sd);
-        // console.log('store',store.state.count);
-      } catch (error) {
-        alert("失敗");
-      }
-    };
+    const handleLogin=()=>{
+    // 请求后台接口
+    // 默认用户：admin/123456
+    loginApi(data.loginData).then(res=>{
+        if(res.data){
+            store.commit('setUserInfo', res.data);
+            localStorage.setItem("loginData",JSON.stringify(res.data))
+            // 跳转/user
+            router.push({
+                path:"/"
+            })
+        }
+    })
+    }
     return {
       ...toRefs(data),
-      hanLogin,
+      handleLogin,
     };
   },
 };
