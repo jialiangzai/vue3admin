@@ -35,7 +35,7 @@
           <el-input type="password" v-model="loginData.password" />
         </el-form-item>
       </el-form>
-      <el-button type="primary" class="login_btn" 
+      <el-button type="primary" class="login_btn" @click="hanLogin"
         >登录</el-button
       >
       <!-- <p>{{num}}</p> -->
@@ -48,14 +48,28 @@ import { useStore } from "vuex";
 export default {
   name: "login",
   setup() {
+    const store = useStore();
+    let count = store.state.count;
     const data = reactive({
       loginData: {
         username: "",
         password: "",
       },
+      num: count,
     });
+    let hanLogin =async () => {
+      // store.commit("setCount", 80);
+      try {
+        let sd = await store.dispatch('setCountFn',200)
+        alert('成功',sd)
+        // console.log('store',store.state.count);
+      } catch (error) {
+        alert('失敗')
+      }
+    };
     return {
       ...toRefs(data),
+      hanLogin
     };
   },
 };

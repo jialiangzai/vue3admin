@@ -1,14 +1,9 @@
 import { createStore } from 'vuex'
-
+import num from './modules/num'
+import userinfo from './modules/userinfo'
 export default createStore({
-  state: {
-  },
-  getters: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
   modules: {
+    num,
+    uInfo:userinfo
   }
 })
