@@ -1,11 +1,11 @@
 <template>
-  <div>首页</div>
+  <div>欢迎来到首页</div>
 </template>
 
 <script>
 export default {
-  name: "index",
-};
+  name: 'index'
+}
 </script>
 
 <style></style>

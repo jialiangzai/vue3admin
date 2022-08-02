@@ -9,7 +9,7 @@ const Service = axios.create({
     baseURL:"http://127.0.0.1:8888/api/private/v1/",
     headers:{
         "Content-type":"application/json;charset=utf-8",
-        "Authorization":store.state.uInfo.userInfo.token
+        "Authorization":store.state.uInfo.userInfo?.token
     }
 })
 // 请求拦截-增加loading,对请求做统一处理
