@@ -95,6 +95,7 @@ export default {
         }
       })
     }
+    searchList()
     return {
       ...toRefs(data),
       searchList,
